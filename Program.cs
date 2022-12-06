@@ -27,7 +27,28 @@ namespace Regnvejrsstatistik
             }
             else Console.WriteLine();
 
+
             double[] values = new double[totalVal];
+
+            for(int i = 0; i < totalVal; i++)
+            {
+                bool correctVal = false;
+                while(!correctVal)
+                {
+                    Console.Write($"\nInsert value {i + 1}/{totalVal}: ");
+                    string strVal = Console.ReadLine();
+                    double val = 0;
+
+                    if(double.TryParse(strVal, out val))
+                    {
+                        Console.WriteLine($"Added value {val} to the list.");
+                        values[i] = val;
+                        correctVal = true;
+                    }
+                    else Console.WriteLine("Incorrect value. Try again.");
+                }
+                
+            }
         }
     }
 }
