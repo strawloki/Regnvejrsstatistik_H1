@@ -19,6 +19,8 @@ namespace Regnvejrsstatistik
 
             double[] values = InsertValues(totalVal);
 
+            PrintValues(values);
+
         }
 
         static double[] InsertValues(int totalVal)
@@ -112,6 +114,26 @@ namespace Regnvejrsstatistik
                 avg += item;
 
             return avg / arr.Length;
+        }
+
+        static void PrintValues(double[] arr)
+        {
+            //Print out values
+            //At the bottom print lowest, highest, avereage
+
+            Console.Write("Value Number\t|\tValue\n\n");
+            int counter = 0;
+            foreach(double val in arr)
+            {
+                ++counter;
+                Console.WriteLine($"\tValue #{counter}\t \t{val}");
+            }
+
+            Console.Write("\n--------------------------------------------------------------------------------------------------\n");
+            Console.WriteLine($"AVEREAGE VALUE: {FindAvereage(arr)}");
+            Console.WriteLine($"HIGHEST VALUE: {FindHighest(arr)}");
+            Console.WriteLine($"LOWEST VALUE: {FindLowest(arr)}");
+            Console.Write("\n--------------------------------------------------------------------------------------------------\n");
         }
     }
 }
