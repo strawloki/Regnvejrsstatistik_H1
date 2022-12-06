@@ -6,21 +6,11 @@ namespace Regnvejrsstatistik
     {
         static void Main(string[] args)
         {
-            //user inputs amount of values first
-            //then user inputs the values themselves
-
-            //afterwards, the lowest, highest and avereage of those values must be found
-            
-
-            //Console.WriteLine(FindAvereage(new double[] {321, 43, 432, 76, 21}));
-
-            
             int totalVal = ReturnTotalValues();
 
             double[] values = InsertValues(totalVal);
 
             PrintValues(values);
-
         }
 
         static double[] InsertValues(int totalVal)
@@ -118,8 +108,6 @@ namespace Regnvejrsstatistik
 
         static void PrintValues(double[] arr)
         {
-            //Print out values
-            //At the bottom print lowest, highest, avereage
 
             Console.Write("Value Number\t|\tValue\n\n");
             int counter = 0;
