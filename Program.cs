@@ -10,27 +10,20 @@ namespace Regnvejrsstatistik
             //then user inputs the values themselves
 
             //afterwards, the lowest, highest and avereage of those values must be found
-            bool totalInputted = false;
+            
 
             //Console.WriteLine(FindAvereage(new double[] {321, 43, 432, 76, 21}));
 
-            Console.WriteLine("Enter the total amount of values below: ");
-            string totalValStr = Console.ReadLine();
-            int totalVal = 0;
+            
+            int totalVal = ReturnTotalValues();
 
-            if(int.TryParse(totalValStr, out totalVal))
-            {
-                if(totalVal > 0) 
-                {
-                    totalInputted = true;
-                    Console.WriteLine("Great success!");
-                }
+            double[] values = InsertValues(totalVal);
 
-            }
-            else Console.WriteLine("Wrong value entered. Try again. Value must be above 0.");
+        }
 
-
-            double[] values = new double[totalVal];
+        static double[] InsertValues(int totalVal)
+        {
+            double[] vals = new double[totalVal];
 
             for(int i = 0; i < totalVal; i++)
             {
@@ -44,7 +37,7 @@ namespace Regnvejrsstatistik
                     if(double.TryParse(strVal, out val))
                     {
                         Console.WriteLine($"Added value {val} to the list.");
-                        values[i] = val;
+                        vals[i] = val;
                         correctVal = true;
                     }
                     else Console.WriteLine("Incorrect value. Try again.");
@@ -52,7 +45,34 @@ namespace Regnvejrsstatistik
                 
             }
 
+            return vals;
 
+        }
+
+        static int ReturnTotalValues()
+        {
+            bool totalInputted = false;
+            int totalVal = 0;
+
+            while(!totalInputted)
+            {
+                Console.WriteLine("Enter the total amount of values below: ");
+                string totalValStr = Console.ReadLine();
+                
+
+                if(int.TryParse(totalValStr, out totalVal))
+                {
+                    if(totalVal > 0) 
+                    {
+                        totalInputted = true;
+                        Console.WriteLine("Great success!");
+                    }
+
+                }
+                else Console.WriteLine("Wrong value entered. Try again. Value must be above 0.");
+            }
+
+            return totalVal;
         }
 
         static double FindLowest(double[] arr)
@@ -93,7 +113,5 @@ namespace Regnvejrsstatistik
 
             return avg / arr.Length;
         }
-        
-
     }
 }
